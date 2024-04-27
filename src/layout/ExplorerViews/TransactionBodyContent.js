@@ -3,22 +3,23 @@ import { Icon } from "@iconify/react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 import { timestampConverter } from "../../utils/timestampConverter";
 
-const TransactionBodyContent = ({
- item
-}) => {
+const TransactionBodyContent = ({ item }) => {
   return (
     <tr>
       <td className="px-2 py-4 m-0 border-t-[1px] text-start dark:border-darkColorSeparator border-colorSeparator">
         <div className="flex text-start">
           <div className="max-w-[125px] text-fontPrimary flex flex-row gap-1 items-center">
-                          {item?.zoneFrom}<span><Icon icon="tdesign:arrow-right" className="text-[#69FABD]" />
-                      </span>{item?.zoneTo}
+            {item?.zoneFrom}
+            <span>
+              <Icon icon="tdesign:arrow-right" className="text-[#69FABD]" />
+            </span>
+            {item?.zoneTo}
           </div>
         </div>
       </td>
       <th className="px-2 py-4 text-start m-0 border-t-[1px] dark:border-darkColorSeparator border-colorSeparator">
         <div className="flex flex-row items-center gap-[5px]">
-          <CopyToClipboard text="">
+          <CopyToClipboard text={item?.transaction_hash}>
             <Icon
               icon="mingcute:copy-3-line"
               rotate={3}
@@ -50,7 +51,7 @@ const TransactionBodyContent = ({
       </td>
       <td className="px-2 py-4 text-start m-0 border-t-[1px] dark:border-darkColorSeparator border-colorSeparator">
         <div className="flex flex-row items-center gap-[5px]">
-          <CopyToClipboard text="">
+          <CopyToClipboard text={item?.fromAddress}>
             <Icon
               icon="mingcute:copy-3-line"
               rotate={3}
@@ -68,7 +69,7 @@ const TransactionBodyContent = ({
       </td>
       <td className="px-2 py-4 text-start m-0 border-t-[1px] dark:border-darkColorSeparator border-colorSeparator">
         <div className="flex flex-row items-center gap-[5px]">
-          <CopyToClipboard text="">
+          <CopyToClipboard text={item?.toAddress}>
             <Icon
               icon="mingcute:copy-3-line"
               rotate={3}

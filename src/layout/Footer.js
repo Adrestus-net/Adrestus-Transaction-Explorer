@@ -17,7 +17,7 @@ const Footer = () => {
           <div className="h-[12px] self-stretch"></div>
           <div className="w-80 flex flex-row justify-center items-center max-w-full text-center">
             <span className="text-[12px] text-font text-fontPrimary">
-              © Harmony 2023 . hello@harmony.one
+              © Adrestus 2024 . hello@adrestus.com
             </span>
           </div>
         </div>

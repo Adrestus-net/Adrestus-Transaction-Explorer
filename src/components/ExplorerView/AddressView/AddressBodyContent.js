@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 import { CopyToClipboard } from "react-copy-to-clipboard";
-import { timestampConverter } from '../../../utils/timestampConverter';
+import { timestampConverter } from "../../../utils/timestampConverter";
 
 const AddressBodyContent = ({
   hash,
@@ -16,7 +16,7 @@ const AddressBodyContent = ({
     <tr>
       <th className="px-2 py-4 text-start m-0 border-t-[1px] dark:border-darkColorSeparator border-colorSeparator">
         <div className="flex flex-row items-center gap-[5px]">
-          <CopyToClipboard text="">
+          <CopyToClipboard text={hash}>
             <Icon
               icon="mingcute:copy-3-line"
               rotate={3}
@@ -41,7 +41,7 @@ const AddressBodyContent = ({
       </td>
       <td className="px-2 py-4 text-start m-0 border-t-[1px] dark:border-darkColorSeparator border-colorSeparator">
         <div className="flex flex-row items-center gap-[5px]">
-          <CopyToClipboard text="">
+          <CopyToClipboard text={from}>
             <Icon
               icon="mingcute:copy-3-line"
               rotate={3}
@@ -66,7 +66,7 @@ const AddressBodyContent = ({
       </td>
       <td className="px-2 py-4 text-start m-0 border-t-[1px] dark:border-darkColorSeparator border-colorSeparator">
         <div className="flex flex-row items-center gap-[5px]">
-          <CopyToClipboard text="">
+          <CopyToClipboard text={to}>
             <Icon
               icon="mingcute:copy-3-line"
               rotate={3}

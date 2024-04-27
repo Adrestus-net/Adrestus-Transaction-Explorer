@@ -11,6 +11,7 @@ import Pagination from "../../components/ExplorerView/AddressView/Pagination";
 import AddressHeader from "../../components/ExplorerView/AddressView/AddressHeader";
 import AddressBodyContent from "../../components/ExplorerView/AddressView/AddressBodyContent";
 import CSVExport from "../../components/ExplorerView/AddressView/CSVExport";
+import { TimeSort } from "../../utils/TimeSort";
 
 const AddressExplorer = () => {
   const { id } = useParams();
@@ -21,13 +22,20 @@ const AddressExplorer = () => {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [transactionsPerPage] = useState(10);
+  const [dateASC, setDateASC] = useState(true);
+
+  const DateOrderhandler = (e) => {
+    e.preventDefault();
+    setDateASC(!dateASC);
+    console.log("Hanlder:", dateASC);
+  };
 
   async function fetchData() {
     setLoading(true); // Begin loading
     try {
       const fetchedTransaction = await GetTransactionsByFromAddress(id);
       const fetchedAccount = await getTotalAccountBalanceByAddressZone(id);
-      setTransactions(fetchedTransaction); // Set the transaction state with the fetched data
+      setTransactions(TimeSort(fetchedTransaction, dateASC));
       setAccount(fetchedAccount);
     } catch (error) {
       console.error("Error fetching transaction: ", error);
@@ -41,7 +49,7 @@ const AddressExplorer = () => {
     if (id) {
       fetchData();
     }
-  }, [id]);
+  }, [id, dateASC]);
 
   const handlePageClick = (data) => {
     let selectedPage = data.selected;
@@ -86,7 +94,10 @@ const AddressExplorer = () => {
                   id="Scrollbar"
                 >
                   <table className="w-full min-w-[1266px] table-auto relative border-spacing-0 border-separate h-full max-h-[1266px] overflow-y-hidden">
-                    <AddressHeader />
+                    <AddressHeader
+                      dateASC={dateASC}
+                      DateOrderhandler={DateOrderhandler}
+                    />
                     <tbody className="max-h-[1266px] overflow-y-hidden">
                       {transactions &&
                         transactions

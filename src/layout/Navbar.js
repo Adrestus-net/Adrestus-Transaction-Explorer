@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Icon } from "@iconify/react";
 
 import DropDownMenu from "../components/DropDownMenu";
@@ -23,7 +24,7 @@ const Navbar = ({ darkModeEnabled, toggleMode }) => {
       <div className="w-full py-3 bg-primary dark:bg-darkPrimary shadow-[0px_4px_8px_rgba(0,0,0,0.12)]">
         <div className="max-w-[1408px] min-w-[343px] w-full flex flex-row justify-between items-center px-5 mx-auto">
           <div className="max-w-[384px] m-0 cursor-pointer text-white text-[16px] leading-[22px] font-semibold">
-            <div className="flex flex-row max-w-full items-center">
+            <Link to="/" className="flex flex-row max-w-full items-center">
               <Logo />
               <div className="flex-col items-start justify-between pl-[7px] pt-2 ad:hidden flex">
                 <span className="text-[1.2em] leading-[0.5em] m-0 p-0">
@@ -33,7 +34,7 @@ const Navbar = ({ darkModeEnabled, toggleMode }) => {
                   Block Explorer
                 </span>
               </div>
-            </div>
+            </Link>
           </div>
           <div className="flex flex-row max-w-full min-w-0 min-h-0 gap-2 ad:gap-10">
             <div className="flex items-center flex-row">

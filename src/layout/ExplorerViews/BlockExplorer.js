@@ -13,7 +13,6 @@ import BlockGasLimitItem from "../../components/ExplorerView/BlockView/BlockGasL
 import BlockGasUsedItem from "../../components/ExplorerView/BlockView/BlockGasUsedItem";
 import BlockSizeItem from "../../components/ExplorerView/BlockView/BlockSizeItem";
 
-import filter_block from "../../utils/filterParams/filter_block";
 import { abbreviateString } from "../../utils/abbreviateString";
 import { timestampConverter } from "../../utils/timestampConverter";
 import CustomItem from "../../components/ExplorerView/TransactionView/CustomItem";
@@ -67,7 +66,10 @@ const BlockExplorer = () => {
                     <>
                       <BlockHashItem title="Hash" value={blocks.blockhash} />
                       <CustomItem title="version" value={blocks?.version} />
-                      <CustomItem title="PreviousHash" value={blocks?.previousHash} />
+                      <CustomItem
+                        title="PreviousHash"
+                        value={blocks?.previousHash}
+                      />
                       <TimestampItem
                         title="Timestamp"
                         value={timestampConverter(blocks.timestamp)}
@@ -75,14 +77,17 @@ const BlockExplorer = () => {
                       <CustomItem title="Size" value={blocks?.size} />
                       <CustomItem title="Height" value={blocks?.height} />
                       <TxHashesItem value={TxHashes} />
-                      <CustomItem title="Generation" value={blocks?.generation} />
+                      <CustomItem
+                        title="Generation"
+                        value={blocks?.generation}
+                      />
                       <CustomItem title="ViewID" value={blocks?.viewID} />
                       <CustomItem title="Zone" value={blocks?.zone} />
                       <CustomItem
                         title="Proposer"
                         value={blocks.transactionProposer}
                       />
-                       <CustomItem
+                      <CustomItem
                         title="LeaderPublicKey"
                         value={blocks.leaderPublicKey}
                       />
@@ -94,10 +99,7 @@ const BlockExplorer = () => {
                         title="PatriciaMerkleRoot"
                         value={blocks.patriciaMerkleRoot}
                       />
-                      <CustomItem
-                        title="Staking"
-                        value={0}
-                      />
+                      <CustomItem title="Staking" value={0} />
                     </>
                   )}
                 </tbody>

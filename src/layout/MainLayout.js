@@ -14,7 +14,7 @@ const MainLayout = () => {
 
   const appendBlock = useCallback(
     (block) => {
-      if (!block) return
+      if (!block) return;
       setBlocks([block, ...blocks].slice(0, 10));
     },
     [blocks]
@@ -28,7 +28,7 @@ const MainLayout = () => {
     },
     [transactions]
   );
-  
+
   useEffect(() => {
     appendTransaction(transaction);
   }, [transaction]);
@@ -38,13 +38,11 @@ const MainLayout = () => {
   }, [block]);
 
   useEffect(() => {
-    let sock = new SockJS(
-      `${process.env.REACT_APP_SERVER}/websocket-explorer`
-    );
+    let sock = new SockJS(`${process.env.REACT_APP_SERVER}/websocket-explorer`);
     let stompClient = Stomp.over(sock);
     stompClient.connect(
       {
-        Authorization: `Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwYW5vc0BnbWFpbC5jb20iLCJpc3MiOiJwYW5vc0BnbWFpbC5jb20iLCJpc1VzZXIiOiJST0xFX1VTRVIiLCJpYXQiOjE3MTE5ODExODIsImV4cCI6MTcxMjA2NzU4Mn0.GQ9gQjLtlZssoyHtMNH1Tk6rf0S_q_s58abV-_bpdAjPfEtax0ZnXPucv68WjLWnRq9wc--uMfvMPTL-I806Ug`,
+        Authorization: `Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwYW5vc0BnbWFpbC5jb20iLCJpc3MiOiJwYW5vc0BnbWFpbC5jb20iLCJpc1VzZXIiOiJST0xFX1VTRVIiLCJpYXQiOjE3MTQyMDY2MjUsImV4cCI6MTcxNDI5MzAyNX0.gQZy7Htcge9NgQ8hNkjFUPCYbkZ9fKuB33KqvBGM0GEEbfQ73du7Z_g4SMhpWL087SsfSrYkpGxHCUv8KFr-kw`,
       },
       (frame) => {
         stompClient.subscribe("/topic/transactions", (message) => {
