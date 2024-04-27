@@ -4,7 +4,7 @@ const TransactionHeader = () => {
   return (
     <thead>
       <tr>
-      <th className="font-bold py-4 px-2 m-0 text-start border-t-[1px] dark:bg-[#1b3e7f] bg-[#f4f7f9] border-colorSeparator dark:border-darkColorSeparator">
+        <th className="font-bold py-4 px-2 m-0 text-start border-t-[1px] dark:bg-[#1b3e7f] bg-[#f4f7f9] border-colorSeparator dark:border-darkColorSeparator">
           <div className="flex flex-col text-start">
             <span className="w-12 text-[14px] leading-[20px] text-[#5f98c7] font-bold text-start">
               Shard
@@ -20,7 +20,9 @@ const TransactionHeader = () => {
         </th>
         <th className="font-bold py-4 px-2 m-0 text-start border-t-[1px] dark:bg-[#1b3e7f] bg-[#f4f7f9] border-colorSeparator dark:border-darkColorSeparator">
           <div className="flex flex-col text-start">
-            <span className="text-[14px] leading-[20px] text-[#5f98c7] font-bold text-start">Status</span>
+            <span className="text-[14px] leading-[20px] text-[#5f98c7] font-bold text-start">
+              Status
+            </span>
           </div>
         </th>
         <th className="font-bold py-4 px-2 m-0 text-start border-t-[1px] dark:bg-[#1b3e7f] bg-[#f4f7f9] border-colorSeparator dark:border-darkColorSeparator">
@@ -37,7 +39,7 @@ const TransactionHeader = () => {
             </span>
           </div>
         </th>
-       
+
         <th className="font-bold py-4 px-2 m-0 text-start border-t-[1px] dark:bg-[#1b3e7f] bg-[#f4f7f9] border-colorSeparator dark:border-darkColorSeparator">
           <div className="flex flex-col text-start">
             <div className="w-[180px] flex flex-row gap-2 items-center">
