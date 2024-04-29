@@ -6,11 +6,15 @@ import BlockBoard from "./BlockBoard";
 import Dashboard from "./Dashboard";
 import TxBoard from "./TxBoard";
 
+import { useAccessToken } from "../hooks/useAccessToken";
+
 const MainLayout = () => {
   const [transactions, setTransactions] = useState([]);
   const [blocks, setBlocks] = useState([]);
   const [block, setBlock] = useState();
   const [transaction, setTransaction] = useState([]);
+
+  const accessToken = useAccessToken();
 
   const appendBlock = useCallback(
     (block) => {
@@ -42,7 +46,7 @@ const MainLayout = () => {
     let stompClient = Stomp.over(sock);
     stompClient.connect(
       {
-        Authorization: `Bearer eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJwYW5vc0BnbWFpbC5jb20iLCJpc3MiOiJwYW5vc0BnbWFpbC5jb20iLCJpc1VzZXIiOiJST0xFX1VTRVIiLCJpYXQiOjE3MTQyMDY2MjUsImV4cCI6MTcxNDI5MzAyNX0.gQZy7Htcge9NgQ8hNkjFUPCYbkZ9fKuB33KqvBGM0GEEbfQ73du7Z_g4SMhpWL087SsfSrYkpGxHCUv8KFr-kw`,
+        Authorization: `Bearer ${accessToken}`,
       },
       (frame) => {
         stompClient.subscribe("/topic/transactions", (message) => {
@@ -58,7 +62,7 @@ const MainLayout = () => {
         stompClient.disconnect();
       }
     };
-  }, []);
+  }, [accessToken]);
 
   return (
     <>
