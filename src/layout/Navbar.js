@@ -122,9 +122,12 @@ const Navbar = ({ darkModeEnabled, toggleMode }) => {
         <div className="w-full py-2 min-[961px]:hidden flex flex-col dark:bg-darkPrimary">
           <div className="py-1 px-4">
             <div className="p-2 flex flex-row justify-between items-center w-full">
-              <span className="text-[18px] leading-[24px] text-fontSecondary dark:text-darkFontPrimary">
+              <a
+                href="/"
+                className="text-[16px] leading-[1.2em] font-semibold text-fontSecondary dark:text-darkFontPrimary"
+              >
                 Home
-              </span>
+              </a>
             </div>
           </div>
           {MenuItems.map((item, index) => {
@@ -140,6 +143,16 @@ const Navbar = ({ darkModeEnabled, toggleMode }) => {
             darkModeEnabled={darkModeEnabled}
             toggleMode={toggleMode}
           />
+          <div className="py-1 px-4">
+            <div className="p-2 flex flex-row justify-between items-center w-full">
+              <a
+                href="/login"
+                className="text-[16px] leading-[1.2em] font-semibold text-fontSecondary dark:text-darkFontPrimary"
+              >
+                Sign In
+              </a>
+            </div>
+          </div>
         </div>
       )}
     </>
