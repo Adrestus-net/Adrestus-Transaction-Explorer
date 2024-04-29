@@ -82,6 +82,13 @@ const Navbar = ({ darkModeEnabled, toggleMode }) => {
                   />
                 );
               })}
+              <Link
+                to="/login"
+                className=" leading-[1em] font-semibold px-2
+                          text-white text-sm"
+              >
+                Sign In
+              </Link>
               <SettingDropMenu
                 darkModeEnabled={darkModeEnabled}
                 toggleMode={toggleMode}
