@@ -36,17 +36,18 @@ export const registerAccount = async (credentials) => {
 };
 
 export const authenticate = async (credentials) => {
-  try {
-    const response = await axios.post(
-      `${process.env.REACT_APP_SERVER}/api/v1/auth/authenticate`,
-      credentials
-    );
+  // try {
+  const response = await axios.post(
+    `${process.env.REACT_APP_SERVER}/api/v1/auth/authenticate`,
+    credentials
+  );
 
-    const { token, expiration } = response.data;
-    return { token, expiration };
-  } catch (error) {
-    throw new Error("Authentication failed");
-  }
+  console.log("===================", response.data);
+  // const { token, expiration } = response.data;
+  // return { token, expiration };
+  // } catch (error) {
+  //   throw new Error("Authentication failed");
+  // }
 };
 
 export const refreshToken = async (resfreshToken) => {
