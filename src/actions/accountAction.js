@@ -41,6 +41,7 @@ export const authenticate = async (credentials) => {
       `${process.env.REACT_APP_SERVER}/api/v1/auth/authenticate`,
       credentials
     );
+
     const { token, expiration } = response.data;
     return { token, expiration };
   } catch (error) {
