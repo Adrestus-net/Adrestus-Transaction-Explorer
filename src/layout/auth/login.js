@@ -8,12 +8,15 @@ const Login = () => {
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    const { token, expiration } = await authenticate({
+    const UserData = await authenticate({
       username: username,
       password: password,
     });
 
-    //console.log("response:", token, expiration);
+    console.log("response:", UserData);
+
+    if (UserData) {
+    }
   };
   return (
     <>
@@ -33,7 +36,7 @@ const Login = () => {
               </Link>
             </span>
           </div>
-          <form>
+          <form onSubmit={loginHandler}>
             <div className="w-full flex flex-col gap-2 text-left">
               <label className="dark:text-white text-black text-[13px]">
                 Username
@@ -64,7 +67,7 @@ const Login = () => {
               />
             </div>
             <button
-              onClick={loginHandler}
+              type="submit"
               className="w-full bg-[#0784c3] py-2 rounded-md text-white hover:bg-[#0670a6] text-[14px] font-medium tracking-tight mt-16"
             >
               LOGIN

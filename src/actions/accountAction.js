@@ -30,24 +30,24 @@ export const registerAccount = async (credentials) => {
       `${process.env.REACT_APP_SERVER}/api/v1/auth/register`,
       credentials
     );
+    if (response) return true;
   } catch (error) {
     throw new Error("Registeration Failed");
   }
 };
 
 export const authenticate = async (credentials) => {
-  // try {
-  const response = await axios.post(
-    `${process.env.REACT_APP_SERVER}/api/v1/auth/authenticate`,
-    credentials
-  );
+  try {
+    const response = await axios.post(
+      `${process.env.REACT_APP_SERVER}/api/v1/auth/authenticate`,
+      credentials
+    );
 
-  console.log("===================", response.data);
-  // const { token, expiration } = response.data;
-  // return { token, expiration };
-  // } catch (error) {
-  //   throw new Error("Authentication failed");
-  // }
+    const { token, expiration } = response.data;
+    return { token, expiration };
+  } catch (error) {
+    throw new Error("Authentication failed");
+  }
 };
 
 export const refreshToken = async (resfreshToken) => {
@@ -62,3 +62,17 @@ export const refreshToken = async (resfreshToken) => {
     throw new Error("Token refresh failed");
   }
 };
+
+export async function getUserToken() {
+  await registerAccount({
+    username: process.env.REACT_APP_USERNAME,
+    password: process.env.REACT_APP_PASSWORD,
+  });
+
+  const { token, expiration } = await authenticate({
+    username: process.env.REACT_APP_USERNAME,
+    password: process.env.REACT_APP_PASSWORD,
+  });
+
+  return { token, expiration };
+}
