@@ -14,7 +14,7 @@ const TxHashesItem = ({ value }) => {
             <div className="flex flex-col items-start">
               {value &&
                 value.map((each, index) => (
-                  <div className="flex flex-row gap-1 items-center">
+                  <div className="flex flex-row gap-1 items-center" key={index}>
                     <CopyToClipboard text={each.transaction_hash}>
                       <Icon
                         icon="mingcute:copy-3-line"
@@ -25,10 +25,7 @@ const TxHashesItem = ({ value }) => {
                       />
                     </CopyToClipboard>
                     <Link to={`/tx/${each.transaction_hash}`}>
-                      <span
-                        className="text-[14px] text-primary dark:text-darkFontPrimary leading-[20px]"
-                        key={index}
-                      >
+                      <span className="text-[14px] text-primary dark:text-darkFontPrimary leading-[20px]">
                         {each.transaction_hash}
                       </span>
                     </Link>

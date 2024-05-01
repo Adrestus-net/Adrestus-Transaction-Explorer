@@ -1,6 +1,27 @@
-export default function HandleSearchKeyDown(value) {
-  if (value.length === 42) window.location.href = `/address/${value}`;
-  else if (value.length === 66) window.location.href = `/tx/${value}`;
-  else if (value.length === 8) window.location.href = `/block/${value}`;
-  else alert("Invalid Values");
+import { searchAction } from "../actions/searchAction";
+
+export async function HandleSearchKeyDown(value) {
+  if (value.startsWith("ADR-")) {
+    window.location.href = `/address/${value}`;
+  } else if (value.length === 64) {
+    const result = await searchAction(value);
+    console.log("result:", result);
+
+    switch (result) {
+      case "block":
+        window.location.href = `/block/${value}`;
+        break;
+      case "txBlock":
+        window.location.href = `/tx/${value}`;
+        break;
+      case "txHash":
+        window.location.href = `/tx/${value}`;
+        break;
+      default:
+        alert("Invalid value");
+        break;
+    }
+  } else {
+    alert("Invalid value");
+  }
 }

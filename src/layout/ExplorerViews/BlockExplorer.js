@@ -96,10 +96,16 @@ const BlockExplorer = () => {
                         value={blocks.merkleRoot}
                       />
                       <CustomItem
-                        title="PatriciaMerkleRoot"
+                        title="PatriciaMerkeRoot"
                         value={blocks.patriciaMerkleRoot}
                       />
                       <CustomItem title="Staking" value={0} />
+                      <CustomItem title="Extra Data" value="--" />
+                      <CustomItem title="Difficulty" value={0} />
+                      <CustomItem title="Mix Hash" value="--" />
+                      <CustomItem title="Nonce" value={0} />
+                      <CustomItem title="SHA3 Uncles" value="--" />
+                      <CustomItem title="Uncles" value="--" />
                     </>
                   )}
                 </tbody>
