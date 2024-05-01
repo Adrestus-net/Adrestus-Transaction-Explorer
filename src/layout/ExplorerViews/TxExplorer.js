@@ -82,42 +82,18 @@ const TxExplorer = () => {
                         title="zoneFrom"
                         value={transaction?.zoneFrom}
                       />
-                      <CustomItem
-                        title="zoneTo"
-                        value={transaction?.zoneTo}
-                      />
-                      <CustomItem
-                        title="v"
-                        value={transaction?.v}
-                      />
-                       <CustomItem
-                        title="r"
-                        value={transaction?.r}
-                      />
-                       <CustomItem
-                        title="s"
-                        value={transaction?.s}
-                      />
-                      <CustomItem
-                        title="pub"
-                        value={transaction?.amountWithTransactionFee}
-                      />
+                      <CustomItem title="zoneTo" value={transaction?.zoneTo} />
+                      <CustomItem title="v" value={transaction?.v} />
+                      <CustomItem title="r" value={transaction?.r} />
+                      <CustomItem title="s" value={transaction?.s} />
+                      <CustomItem title="pub" value={transaction?.pub} />
                       <TxFeeItem
                         title="Transaction Fee"
                         value={transaction.amountWithTransactionFee}
                       />
-                      <CustomItem
-                        title="nonce"
-                        value={transaction?.nonce}
-                      />
-                      <CustomItem
-                        title="xaxis"
-                        value={transaction?.xaxis}
-                      />
-                      <CustomItem
-                        title="yaxis"
-                        value={transaction?.yaxis}
-                      /> 
+                      <CustomItem title="nonce" value={transaction?.nonce} />
+                      <CustomItem title="xaxis" value={transaction?.xaxis} />
+                      <CustomItem title="yaxis" value={transaction?.yaxis} />
                     </>
                   )}
                 </tbody>

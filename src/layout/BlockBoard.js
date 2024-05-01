@@ -5,7 +5,7 @@ import { timestampConverter } from "../utils/timestampConverter";
 
 const BlockBoard = ({ blocks }) => {
   return (
-    <div className="flex flex-col p-0 bg-white border-[1px] dark:bg-darkPrimary border-colorSeparator dark:border-darkColorSeparator rounded-lg max-w-full w-[49%]">
+    <div className="flex flex-col p-0 bg-white border-[1px] dark:bg-darkPrimary border-colorSeparator dark:border-darkColorSeparator rounded-lg max-w-full w-[49%] sm:w-full md:w-full">
       <div className="p-4 h-[62px] border-b-[1px] border-colorSeparator dark:border-darkColorSeparator flex flex-row justify-between items-center">
         <span className="text-[18px] leading-[24px] font-bold text-fontSecondary dark:text-darkFontPrimary">
           Latest Blocks
@@ -17,19 +17,33 @@ const BlockBoard = ({ blocks }) => {
           className="overflow-x-auto overflow-y-hidden flex flex-col max-w-full"
           id="Scrollbar"
         >
-          <table className="w-full min-w-[620px] relative border-spacing-0 border-separate h-auto">
+          <table className="w-full relative border-spacing-0 border-separate h-auto">
             <thead>
-              <tr className="[&>*:last-child]:text-right">
-                {BlockPanelHeaderParams.map((item, index) => {
-                  return (
-                    <th key={index} className="p-0 m-0 text-start">
-                      <span className="text-[14px] text-fontPrimary dark:text-darkHeaderColor font-light leading-[20px]">
-                        {item}
-                      </span>
-                    </th>
-                  );
-                })}
-              </tr>
+              <th className="p-0 m-0 text-start min-w-[70px]">
+                <span className="text-[14px] text-fontPrimary dark:text-darkHeaderColor font-light leading-[20px]">
+                  Shard
+                </span>
+              </th>
+              <th className="p-0 m-0 text-center w-full min-w-[110px]">
+                <span className="text-[14px] text-fontPrimary dark:text-darkHeaderColor font-light leading-[20px]">
+                  Hash
+                </span>
+              </th>
+              <th className="p-0 m-0 text-center w-full min-w-[135px]">
+                <span className="text-[14px] text-fontPrimary dark:text-darkHeaderColor font-light leading-[20px]">
+                  Height
+                </span>
+              </th>
+              <th className="p-0 m-0 text-center w-full min-w-[80px]">
+                <span className="text-[14px] text-fontPrimary dark:text-darkHeaderColor font-light leading-[20px]">
+                  Transactions
+                </span>
+              </th>
+              <th className="p-0 m-0 text-right w-full min-w-[150px]">
+                <span className="text-[14px] text-fontPrimary dark:text-darkHeaderColor font-light leading-[20px]">
+                  Timestamp
+                </span>
+              </th>
             </thead>
             <tbody>
               {blocks &&
@@ -40,27 +54,27 @@ const BlockBoard = ({ blocks }) => {
                       className="[&>*:last-child]:text-right text-[14px]"
                       key={index}
                     >
-                      <td className="text-start py-4 border-b-[1px] border-colorSeparator dark:border-darkColorSeparator">
+                      <td className="text-start py-4 pl-3 border-b-[1px] border-colorSeparator dark:border-darkColorSeparator">
                         <div className="max-w-[125px] text-primary dark:text-darkIconColor">
                           {item?.zone}
                         </div>
                       </td>
-                      <td className="text-start py-4 border-b-[1px] border-colorSeparator dark:border-darkColorSeparator">
+                      <td className="text-center py-4 border-b-[1px] border-colorSeparator dark:border-darkColorSeparator">
                         <Link to={`/block/${item?.hash}`}>
                           <div className="max-w-[125px] text-primary dark:text-darkIconColor">
                             {abbreviateString(item?.hash || "")}
                           </div>
                         </Link>
                       </td>
-                      <td className="text-start py-4 border-b-[1px] border-colorSeparator dark:border-darkColorSeparator">
+                      <td className="text-center py-4 border-b-[1px] border-colorSeparator dark:border-darkColorSeparator">
                         <Link to={`/block/${item?.hash}`}>
-                          <div className="max-w-[125px] text-primary dark:text-darkIconColor">
+                          <div className="max-w-[150px] text-primary dark:text-darkIconColor">
                             {abbreviateString(String(item?.height || ""))}
                           </div>
                         </Link>
                       </td>
-                      <td className="text-start py-4 border-b-[1px] border-colorSeparator dark:border-darkColorSeparator">
-                        <div className="max-w-[125px] text-primary dark:text-darkIconColor">
+                      <td className="text-center py-4 border-b-[1px] border-colorSeparator dark:border-darkColorSeparator">
+                        <div className="max-w-[150px] text-primary dark:text-darkIconColor">
                           {abbreviateString(String(item?.transactions || ""))}
                         </div>
                       </td>

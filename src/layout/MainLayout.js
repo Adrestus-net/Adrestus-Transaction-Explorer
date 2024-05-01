@@ -87,7 +87,7 @@ const MainLayout = () => {
         <Dashboard />
       </div>
       <div className="w-full max-w-[1408px] min-w-[343px] px-5 mx-auto pb-6 block">
-        <div className="w-full flex flex-row items-center justify-between">
+        <div className="w-full flex flex-row sm:flex-col md:flex-col items-center justify-between sm:gap-3 md:gap-3">
           <BlockBoard blocks={blocks} />
           <TxBoard transactions={transactions} />
         </div>
