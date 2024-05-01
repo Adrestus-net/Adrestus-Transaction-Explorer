@@ -2,7 +2,7 @@ import { Icon } from "@iconify/react";
 import { useCallback, useEffect, useState } from "react";
 import { TxPanelBodyParams } from "../utils/constants/TxParams";
 import { BlockPanelBodyParams } from "../utils/constants/BlockParams";
-import HandleSearchKeyDown from "../utils/handleSearchKeyDown";
+import { HandleSearchKeyDown } from "../utils/handleSearchKeyDown";
 import SearchResultItem from "./SearchResultItem";
 
 const Searchboard = () => {

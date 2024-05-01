@@ -19,27 +19,27 @@ const BlockBoard = ({ blocks }) => {
         >
           <table className="w-full relative border-spacing-0 border-separate h-auto">
             <thead>
-              <th className="p-0 m-0 text-start min-w-[70px]">
+              <th className="p-0 m-0 text-start min-w-[50px]">
                 <span className="text-[14px] text-fontPrimary dark:text-darkHeaderColor font-light leading-[20px]">
                   Shard
                 </span>
               </th>
-              <th className="p-0 m-0 text-center w-full min-w-[110px]">
+              <th className="p-0 m-0 text-center min-w-[60px]">
                 <span className="text-[14px] text-fontPrimary dark:text-darkHeaderColor font-light leading-[20px]">
                   Hash
                 </span>
               </th>
-              <th className="p-0 m-0 text-center w-full min-w-[135px]">
+              <th className="p-0 m-0 text-center min-w-[110px]">
                 <span className="text-[14px] text-fontPrimary dark:text-darkHeaderColor font-light leading-[20px]">
                   Height
                 </span>
               </th>
-              <th className="p-0 m-0 text-center w-full min-w-[80px]">
+              <th className="p-0 m-0 text-center min-w-[100px]">
                 <span className="text-[14px] text-fontPrimary dark:text-darkHeaderColor font-light leading-[20px]">
                   Transactions
                 </span>
               </th>
-              <th className="p-0 m-0 text-right w-full min-w-[150px]">
+              <th className="p-0 m-0 text-right min-w-[150px]">
                 <span className="text-[14px] text-fontPrimary dark:text-darkHeaderColor font-light leading-[20px]">
                   Timestamp
                 </span>
@@ -59,22 +59,22 @@ const BlockBoard = ({ blocks }) => {
                           {item?.zone}
                         </div>
                       </td>
-                      <td className="text-center py-4 border-b-[1px] border-colorSeparator dark:border-darkColorSeparator">
+                      <td className="text-center py-4 pl-5 border-b-[1px] border-colorSeparator dark:border-darkColorSeparator">
                         <Link to={`/block/${item?.hash}`}>
-                          <div className="max-w-[125px] text-primary dark:text-darkIconColor">
+                          <div className=" text-primary dark:text-darkIconColor">
                             {abbreviateString(item?.hash || "")}
                           </div>
                         </Link>
                       </td>
                       <td className="text-center py-4 border-b-[1px] border-colorSeparator dark:border-darkColorSeparator">
                         <Link to={`/block/${item?.hash}`}>
-                          <div className="max-w-[150px] text-primary dark:text-darkIconColor">
+                          <div className=" text-primary dark:text-darkIconColor">
                             {abbreviateString(String(item?.height || ""))}
                           </div>
                         </Link>
                       </td>
                       <td className="text-center py-4 border-b-[1px] border-colorSeparator dark:border-darkColorSeparator">
-                        <div className="max-w-[150px] text-primary dark:text-darkIconColor">
+                        <div className=" text-primary dark:text-darkIconColor">
                           {abbreviateString(String(item?.transactions || ""))}
                         </div>
                       </td>
