@@ -12,7 +12,7 @@ const Register = () => {
   const registerHandler = async (e) => {
     e.preventDefault();
     if (password !== "" && confirmPassword === password && agreeCondition) {
-      const data = await registerAccount({
+      await registerAccount({
         username: username,
         password: password,
       });
