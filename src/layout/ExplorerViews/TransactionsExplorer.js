@@ -5,15 +5,24 @@ import { findAllTransactionsBetweenRange } from "../../actions/transactionAction
 import PaginationTemp from "../../components/PaginationTemp";
 import CSVExport from "../../components/ExplorerView/AddressView/CSVExport";
 import TransactionBodyContent from "./TransactionBodyContent";
+import TransactionHeader from "./TransactionHeader";
+import { TimeSort } from "../../utils/TimeSort";
 
 const TransactionsExplorer = () => {
   const id = useParams();
 
   const [transactions, setTransactions] = useState(null);
+  const [totalPage, setTotalPage] = useState(0);
   const [txPerPage, setTxPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [dateASC, setDateASC] = useState(true);
+
+  const DateOrderhandler = (e) => {
+    e.preventDefault();
+    setDateASC(!dateASC);
+  };
 
   const handleSelectChange = (event) => {
     setTxPerPage(event.target.value);
@@ -30,6 +39,7 @@ const TransactionsExplorer = () => {
         currentPage,
         txPerPage
       );
+      setTotalPage(fetchedTransactions.length / txPerPage);
       setTransactions(fetchedTransactions);
     } catch (error) {
       console.error("Error fetching transaction: ", error);
@@ -56,6 +66,7 @@ const TransactionsExplorer = () => {
                   {txPerPage}&nbsp;transactions shown
                 </span>
                 <PaginationTemp
+                  totalPage={totalPage}
                   currentPage={currentPage}
                   setCurrentPage={setCurrentPage}
                 />
@@ -65,9 +76,13 @@ const TransactionsExplorer = () => {
                 id="Scrollbar"
               >
                 <table className="w-full min-w-[1266px] table-auto relative border-spacing-0 border-separate h-full max-h-[1266px] overflow-y-hidden">
+                  <TransactionHeader
+                    dateASC={dateASC}
+                    DateOrderhandler={DateOrderhandler}
+                  />
                   <tbody className="max-h-[1266px] overflow-y-hidden">
                     {transactions &&
-                      transactions.map((item, index) => (
+                      TimeSort(transactions, dateASC).map((item, index) => (
                         <TransactionBodyContent key={index} item={item} />
                       ))}
                   </tbody>
@@ -81,6 +96,8 @@ const TransactionsExplorer = () => {
                       onChange={handleSelectChange}
                       className="block appearance-none w-full bg-transparent border border-gray-400 hover:border-gray-500 hover:cursor-pointer px-4 py-2 pr-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline dark:text-white"
                     >
+                      {" "}
+                      totalPage={totalPage}
                       <option value={10}>10</option>
                       <option value={25}>25</option>
                       <option value={50}>50</option>
@@ -92,6 +109,7 @@ const TransactionsExplorer = () => {
                   </span>
                 </div>
                 <PaginationTemp
+                  totalPage={totalPage}
                   currentPage={currentPage}
                   setCurrentPage={setCurrentPage}
                 />

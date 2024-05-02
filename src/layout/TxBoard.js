@@ -21,12 +21,12 @@ const TxBoard = ({ transactions }) => {
         >
           <table className="w-full relative border-spacing-0 border-separate h-auto">
             <thead>
-              <th className="p-0 m-0 text-start min-w-[70px]">
+              <th className="p-0 m-0 text-start min-w-[50px]">
                 <span className="text-[14px] text-fontPrimary dark:text-darkHeaderColor font-light leading-[20px]">
                   Shard
                 </span>
               </th>
-              <th className="p-0 m-0 text-center w-full min-w-[110px]">
+              <th className="p-0 m-0 text-center w-full min-w-[90px]">
                 <span className="text-[14px] text-fontPrimary dark:text-darkHeaderColor font-light leading-[20px]">
                   Hash
                 </span>
@@ -36,12 +36,12 @@ const TxBoard = ({ transactions }) => {
                   Height
                 </span>
               </th>
-              <th className="p-0 m-0 text-center w-full min-w-[130px]">
+              <th className="p-0 m-0 text-center w-full min-w-[110px]">
                 <span className="text-[14px] text-fontPrimary dark:text-darkHeaderColor font-light leading-[20px]">
                   From
                 </span>
               </th>
-              <th className="p-0 m-0 text-center w-full min-w-[120px]">
+              <th className="p-0 m-0 text-center w-full min-w-[110px]">
                 <span className="text-[14px] text-fontPrimary dark:text-darkHeaderColor font-light leading-[20px]">
                   To
                 </span>
@@ -101,7 +101,7 @@ const TxBoard = ({ transactions }) => {
                           {abbreviateString(item?.toAddress)}
                         </Link>
                       </td>
-                      <td className="max-w-[125px] text-left py-4 border-b-[1px] text-fontPrimary border-colorSeparator dark:border-darkColorSeparator">
+                      <td className="max-w-[150px] text-left py-4 border-b-[1px] text-fontPrimary border-colorSeparator dark:border-darkColorSeparator">
                         {timestampConverter(item?.creationDate)}
                       </td>
                     </tr>

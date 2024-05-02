@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import { findAllBlocksBetweenRange } from "../../actions/blockAction";
+import { TimeStamp } from "../../utils/TimeSort";
 import BlockHeader from "./BlockHeader";
 import BlockBodyContent from "./BlockBodyContent";
 import PaginationTemp from "../../components/PaginationTemp";
@@ -13,12 +14,19 @@ const BlocksExplorer = () => {
   const [blocks, setBlocks] = useState(null);
   const [blockPerPage, setBlockPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(0);
+  const [totalPage, setTotalPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [dateASC, setDateASC] = useState(true);
+
+  const DateOrderhandler = (e) => {
+    e.preventDefault();
+    setDateASC(!dateASC);
+  };
 
   useEffect(() => {
     fetchData();
-  }, [currentPage, blockPerPage]);
+  }, [currentPage, blockPerPage, dateASC]);
 
   const handleSelectChange = (event) => {
     setBlockPerPage(event.target.value);
@@ -31,6 +39,7 @@ const BlocksExplorer = () => {
         currentPage,
         blockPerPage
       );
+      setTotalPage(fetchedBlocks.length / blockPerPage);
       setBlocks(fetchedBlocks);
     } catch (error) {
       console.error("Error fetching transaction: ", error);
@@ -59,6 +68,7 @@ const BlocksExplorer = () => {
                 <PaginationTemp
                   currentPage={currentPage}
                   setCurrentPage={setCurrentPage}
+                  totalPage={totalPage}
                 />
               </div>
               <div
@@ -66,10 +76,13 @@ const BlocksExplorer = () => {
                 id="Scrollbar"
               >
                 <table className="w-full min-w-[1266px] table-auto relative border-spacing-0 border-separate h-full max-h-[1266px] overflow-y-hidden">
-                  <BlockHeader />
+                  <BlockHeader
+                    dateASC={dateASC}
+                    DateOrderhandler={DateOrderhandler}
+                  />
                   <tbody className="max-h-[1266px] overflow-y-hidden">
                     {blocks &&
-                      blocks.map((item, index) => (
+                      TimeStamp(blocks, dateASC).map((item, index) => (
                         <BlockBodyContent key={index} item={item} />
                       ))}
                   </tbody>
@@ -96,6 +109,7 @@ const BlocksExplorer = () => {
                 <PaginationTemp
                   currentPage={currentPage}
                   setCurrentPage={setCurrentPage}
+                  totalPage={totalPage}
                 />
               </div>
               <CSVExport id={id} />
