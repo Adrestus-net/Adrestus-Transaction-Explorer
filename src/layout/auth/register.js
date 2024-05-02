@@ -23,7 +23,7 @@ const Register = () => {
   };
   return (
     <>
-      <div className="w-full flex justify-center md:px-10 py-20">
+      <div className="w-full flex justify-center md:px-10 py-20 h-full min-h-[calc(100vh-179px)]">
         <div className="w-[400px] sm:w-[300px] mx-auto my-auto flex flex-col gap-3 p-6 dark:bg-[#111a2e] bg-white rounded-[8px] shadow-md">
           <div className="text-center mb-5 flex flex-col gap-2">
             <span className="dark:text-white text-dark font-semibold">
