@@ -16,7 +16,6 @@ const Register = () => {
         username: username,
         password: password,
       });
-      console.log("id, username, password", data.username, data.password);
     } else {
       alert("Check Password again!");
     }
