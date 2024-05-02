@@ -5,7 +5,7 @@ export const getBlockByHash = async (hash) => {
     const response = await axios.get(
       `${process.env.REACT_APP_SERVER}/api/v1/explorer/block/${hash}`
     );
-    console.log("response block by hash", response.data);
+
     return response.data;
   } catch (error) {
     throw error;
@@ -15,9 +15,13 @@ export const getBlockByHash = async (hash) => {
 export const findAllBlocksBetweenRange = async (currentPage, blockPerPage) => {
   try {
     const response = await axios.get(
-      `${process.env.REACT_APP_SERVER}/api/v1/explorer/findAllBlocksBetweenRange/${currentPage * blockPerPage}/${blockPerPage}`
+      `${
+        process.env.REACT_APP_SERVER
+      }/api/v1/explorer/findAllBlocksBetweenRange/${
+        currentPage * blockPerPage
+      }/${blockPerPage}`
     );
-    console.log("response blocks between Range", response.data);
+
     return response.data;
   } catch (error) {
     throw error;
@@ -29,7 +33,7 @@ export const getTxNumberPerBlock = async (block) => {
     const response = await axios.get(
       `${process.env.REACT_APP_SERVER}/api/v1/explorer/transactionsByHash/${block}`
     );
-    console.log("response blocks between Range", response.data);
+
     return response.data;
   } catch (error) {
     throw error;
