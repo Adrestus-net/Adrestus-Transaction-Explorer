@@ -1,11 +1,11 @@
 import { Icon } from "@iconify/react";
 import { BlockPanelHeaderParams } from "../../utils/constants/BlockParams";
 
-const BlockHeader = () => {
+const BlockHeader = ({ dateASC, DateOrderhandler }) => {
   return (
     <thead>
       <tr>
-      <th className="font-bold py-4 px-2 m-0 text-start border-t-[1px] dark:bg-[#1b3e7f] bg-[#f4f7f9] border-colorSeparator dark:border-darkColorSeparator">
+        <th className="font-bold py-4 px-2 m-0 text-start border-t-[1px] dark:bg-[#1b3e7f] bg-[#f4f7f9] border-colorSeparator dark:border-darkColorSeparator">
           <div className="flex flex-col text-start">
             <span className="w-12 text-[14px] leading-[20px] text-[#5f98c7] font-bold text-start">
               Shard
@@ -26,8 +26,8 @@ const BlockHeader = () => {
             </span>
           </div>
         </th>
-        <th className="font-bold py-4 px-2 m-0 text-start border-t-[1px] dark:bg-[#1b3e7f] bg-[#f4f7f9] border-colorSeparator dark:border-darkColorSeparator">
-          <div className="flex flex-col text-start">
+        <th className="font-bold py-4 px-2 m-0 text-start border-t-[1px] dark:bg-[#1b3e7f] bg-[#f4f7f9] border-colorSeparator dark:border-darkColorSeparator hover:cursor-pointer group">
+          <div className="flex flex-col text-start" onClick={DateOrderhandler}>
             <span className="w-[200px] text-[14px] leading-[20px] text-[#5f98c7] font-bold text-start">
               Timestamp
             </span>
@@ -48,7 +48,7 @@ const BlockHeader = () => {
               </span>
             </div>
           </div>
-        </th>      
+        </th>
       </tr>
     </thead>
   );

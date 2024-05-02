@@ -1,6 +1,6 @@
 import { Icon } from "@iconify/react";
 
-const TransactionHeader = () => {
+const TransactionHeader = ({ dateASC, DateOrderhandler }) => {
   return (
     <thead>
       <tr>
@@ -64,8 +64,8 @@ const TransactionHeader = () => {
             </span>
           </div>
         </th>
-        <th className="font-bold py-4 px-2 m-0 text-start border-t-[1px] dark:bg-[#1b3e7f] bg-[#f4f7f9] border-colorSeparator dark:border-darkColorSeparator">
-          <div className="flex flex-col text-start">
+        <th className="font-bold py-4 px-2 m-0 text-start border-t-[1px] dark:bg-[#1b3e7f] bg-[#f4f7f9] border-colorSeparator dark:border-darkColorSeparator hover:cursor-pointer group">
+          <div className="flex flex-col text-start" onClick={DateOrderhandler}>
             <span className="w-[140px] text-[14px] leading-[20px] text-[#5f98c7] font-bold text-start">
               Timestamp
             </span>
