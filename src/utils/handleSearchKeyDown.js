@@ -5,8 +5,6 @@ export async function HandleSearchKeyDown(value) {
     window.location.href = `/address/${value}`;
   } else if (value.length === 64) {
     const result = await searchAction(value);
-    console.log("result:", result);
-
     switch (result) {
       case "block":
         window.location.href = `/block/${value}`;
