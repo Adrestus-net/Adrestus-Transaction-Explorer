@@ -9,9 +9,9 @@ export async function HandleSearchKeyDown(value) {
       case "block":
         window.location.href = `/block/${value}`;
         break;
-      case "txBlock":
-        window.location.href = `/tx/${value}`;
-        break;
+      // case "txBlock":
+      //   window.location.href = `/tx/${value}`;
+      //   break;
       case "txHash":
         window.location.href = `/tx/${value}`;
         break;
