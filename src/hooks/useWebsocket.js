@@ -75,9 +75,7 @@ export const WebSocketProvider = ({ children }) => {
           Authorization: `Bearer ${token}`,
         },
         (frame) => {
-          console.log("frame:", frame);
           stompClient.subscribe("/topic/transactions", (message) => {
-            console.log(message.body);
             setTransaction(JSON.parse(message.body));
           });
           stompClient.subscribe("/topic/blocks", (message) => {

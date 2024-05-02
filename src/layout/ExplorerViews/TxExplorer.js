@@ -18,8 +18,6 @@ const TxExplorer = () => {
   const [error, setError] = useState(null);
   const { id } = useParams();
 
-  console.log("transaction id:", id);
-
   async function fetchData() {
     setLoading(true); // Begin loading
     try {

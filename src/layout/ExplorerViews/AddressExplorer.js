@@ -27,7 +27,6 @@ const AddressExplorer = () => {
   const DateOrderhandler = (e) => {
     e.preventDefault();
     setDateASC(!dateASC);
-    console.log("Hanlder:", dateASC);
   };
 
   async function fetchData() {

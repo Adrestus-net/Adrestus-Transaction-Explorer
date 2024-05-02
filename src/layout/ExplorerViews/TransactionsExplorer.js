@@ -31,7 +31,6 @@ const TransactionsExplorer = () => {
         txPerPage
       );
       setTransactions(fetchedTransactions);
-      console.log("Tx:", transactions);
     } catch (error) {
       console.error("Error fetching transaction: ", error);
       setError(error); // Set the error state

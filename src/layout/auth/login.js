@@ -13,8 +13,6 @@ const Login = () => {
       password: password,
     });
 
-    console.log("response:", UserData);
-
     if (UserData) {
     }
   };
