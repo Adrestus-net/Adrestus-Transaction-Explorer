@@ -16,7 +16,7 @@ import {
 } from "./layout/ExplorerViews";
 
 import "./App.css";
-import { WebScoketProvider } from "./hooks/useWebsocket";
+import { WebSocketProvider } from "./hooks/useWebsocket";
 
 function AppLayout({ children }) {
   return (
@@ -34,7 +34,7 @@ function App() {
       <div className="App">
         <Navbar darkModeEnabled={darkModeEnabled} toggleMode={toggleMode} />
         <div className="w-full bg-board dark:bg-[#030921]">
-          <WebScoketProvider>
+          <WebSocketProvider>
             <Routes>
               <Route
                 exact
@@ -88,7 +88,7 @@ function App() {
               <Route path="/login" element={<Login />} />
               <Route path="/Register" element={<Register />} />
             </Routes>
-          </WebScoketProvider>
+          </WebSocketProvider>
         </div>
         <Footer />
       </div>

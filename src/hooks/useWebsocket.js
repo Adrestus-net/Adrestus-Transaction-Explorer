@@ -21,7 +21,7 @@ export default function useWebSocket() {
   return useContext(WebSocketContext);
 }
 
-export const WebScoketProvider = ({ children }) => {
+export const WebSocketProvider = ({ children }) => {
   const [blocks, setBlocks] = useState([]);
   const [transactions, setTransactions] = useState([]);
 
